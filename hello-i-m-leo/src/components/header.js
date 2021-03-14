@@ -13,6 +13,7 @@ const Header = () => {
                     <ListLink to={"/"}><span role="img" aria-label="my_head">&#129489;</span></ListLink>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
+                            <ListLink to={"/experiences"}>Experiences</ListLink>
                             <ListLink to="/formations">Formations</ListLink>
                             <ListLink to="/outils">Outils</ListLink>
                         </div>

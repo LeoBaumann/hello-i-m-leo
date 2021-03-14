@@ -1,45 +1,49 @@
 import * as React from "react"
-import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
+
+import Typed from  'react-typed'
+
+import Image from "../components/image"
 
 const IndexPage = ({data}) => {
   return (
     <div>
         <Layout>
-          <div class="experiences">
-            {data.allMysqlExperiencesPro.edges.map(({ node }, index) =>
-                <div class="experience" key={index}>
-                    <p class="experience__job">{node.job}</p>
-                    <p><a href={node.url} class="experience__company">{node.company}</a></p>
-                    <p class="experience__city">{node.city}</p>
-                    <p class="experience__other">{node.other}</p>
-                    <p class="experience__years">{node.years}</p>
+            <div className="home">
+                <div className="home__container">
+                    <div className="w-25">
+                        <Image filename="pdp.jpg"/>
+                    </div>
+                    <div className="texts">
+                        <div className="name">
+                            <p>Léo Baumann</p>
+                        </div>
+                        <div className="typed">
+                            <Typed
+                                strings={['Etudiant en informatique <br> à Strasbourg <br> 19 ans']}
+                                typeSpeed={50}
+                                backSpeed={50}
+                                backDelay={1000}
+                                loop={true}
+                            />
+                        </div>
+                    </div>
                 </div>
-            )}
-          </div>
+                <div className="home__others">
+                    <div className="other__github">
+                        <div className="w-25">
+                            <Image filename="GitHub-Mark-120px-plus.png"/>
+                        </div>
+                        <div className="my__github">
+                            <p><a href="https://github.com/LeoBaumann" className="github__text">Mon GitHub</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </Layout>
     </div>
   )
 }
 
 export default IndexPage
-
-
-export const query = graphql`
-    query {
-        allMysqlExperiencesPro {
-            edges {
-                node {
-                    id
-                    company
-                    url
-                    city
-                    job
-                    other
-                    years
-                }
-            }
-        }
-    }
-`
