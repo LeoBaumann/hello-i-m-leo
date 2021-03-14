@@ -1,20 +1,23 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 
+import Layout from "../components/layout"
+
 // markup
 const IndexPage = ({data}) => {
   return (
-    <main>
-      <div class="outils">
-        {data.allMysqlFormations.edges.map(({ node }, index) => 
-            <div class="outil" key={index}>
-                <p class="outil_name">{node.name}</p>
-                <p class="outil_url">{node.url}</p>
-                <p class="outil_other">{node.other}</p>
-            </div>
-        )}
-      </div>
-    </main>
+    <div>
+        <Layout>
+          <div class="outils">
+            {data.allMysqlOutils.edges.map(({ node }, index) =>
+                <div class="outil" key={index}>
+                    <p class="outil_name">{node.name}</p>
+                    <p class="outil_url">{node.url}</p>
+                </div>
+            )}
+          </div>
+        </Layout>
+    </div>
   )
 }
 
@@ -28,8 +31,8 @@ export const query = graphql`
                 node {
                     id
                     name
-                    url
                     other
+                    url
                 }
             }
         }
